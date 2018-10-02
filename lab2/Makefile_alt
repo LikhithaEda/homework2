@@ -1,0 +1,16 @@
+CXX = g++
+CXXFLAGS = -Wall -g
+OBJECTS = Account.o account_client.o Invoice.o invoice_client.o
+
+BIN = client
+
+all: $(BIN)
+
+$(BIN): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $^
+
+clean: 
+	rm $(BIN) $(OBJECTS)
